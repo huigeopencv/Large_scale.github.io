@@ -3,6 +3,16 @@ var modal = document.getElementById("modal");
 var modalImg = document.getElementById("img01");
 var modalVideo = document.getElementById("video01");
 var captionText = document.getElementById("caption");
+var modalText = document.createElement('div'); // 创建用于显示文本的div
+modalText.style.color = "white";
+modalText.style.fontSize = "24px";
+modalText.style.position = "absolute";
+modalText.style.top = "50%";
+modalText.style.left = "50%";
+modalText.style.transform = "translate(-50%, -50%)";
+modalText.style.display = "none";
+modal.appendChild(modalText); // 将文本div添加到模态中
+
 var span = document.getElementsByClassName("close")[0]; // 关闭按钮
 
 // 关闭模态的功能
@@ -10,6 +20,7 @@ span.onclick = function () {
     modal.style.display = "none";
     modalImg.style.display = "none";
     modalVideo.style.display = "none";
+    modalText.style.display = "none"; // 隐藏文本
     modalVideo.pause(); // 暂停视频并重置位置
     modalVideo.currentTime = 0;
 };
@@ -19,6 +30,7 @@ function showModal(imageSrc) {
     modal.style.display = "block";
     modalImg.style.display = "block";
     modalVideo.style.display = "none";
+    modalText.style.display = "none"; // 隐藏文本
     modalImg.src = imageSrc;
     captionText.innerHTML = imageSrc;
 }
@@ -28,9 +40,19 @@ function showModalVideo(videoSrc) {
     modal.style.display = "block";
     modalImg.style.display = "none";
     modalVideo.style.display = "block";
+    modalText.style.display = "none"; // 隐藏文本
     modalVideo.src = videoSrc;
     captionText.innerHTML = videoSrc;
     modalVideo.autoplay = true;
+}
+
+// 显示文本的函数
+function showModalText(message) {
+    modal.style.display = "block";
+    modalImg.style.display = "none";
+    modalVideo.style.display = "none";
+    modalText.style.display = "block"; // 显示文本
+    modalText.innerHTML = message; // 设置文本内容
 }
 
 // 为每个按钮添加事件监听器
@@ -45,10 +67,10 @@ document.getElementById('btnTraffic').addEventListener('click', function () {
 });
 
 document.getElementById('btnPolicy').addEventListener('click', function () {
-    showModal('常规服务已就位');
-    setTimeout(() => showModal('应急服务已插入'), 5000);
+    showModalText('常规服务已就位');
+    setTimeout(() => showModalText('应急服务已插入'), 5000);
     setTimeout(() => showModalVideo('DRL.mp4'), 10000);
-    setTimeout(() => showModal('深度强化学习已训练'), 85000);
+    setTimeout(() => showModalText('深度强化学习已训练'), 85000);
 });
 
 document.getElementById('btnPerformance').addEventListener('click', function () {
