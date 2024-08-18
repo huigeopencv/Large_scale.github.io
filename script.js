@@ -32,7 +32,7 @@ function showModal(imageSrc) {
     modalVideo.style.display = "none";
     modalText.style.display = "none"; // 隐藏文本
     modalImg.src = imageSrc;
-    captionText.innerHTML = imageSrc;
+    // captionText.innerHTML = imageSrc;
 }
 
 // 显示视频的函数
@@ -42,7 +42,7 @@ function showModalVideo(videoSrc) {
     modalVideo.style.display = "block";
     modalText.style.display = "none"; // 隐藏文本
     modalVideo.src = videoSrc;
-    captionText.innerHTML = videoSrc;
+    // captionText.innerHTML = videoSrc;
     modalVideo.autoplay = true;
 }
 
